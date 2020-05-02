@@ -1,0 +1,23 @@
+#!/usr/bin/env python3.6
+#Accept file name and line number and print contents of line
+#Handle errors for wrong linenumbers
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('filename', help='name of the file to read')
+parser.add_argument('linenumber', type=int,help='line number to print')
+
+args = parser.parse_args()
+
+try:
+    lines = open(args.filename,'r').readlines()
+    line = lines[args.linenumber - 1]
+except IndexError:
+    print(f"file {args.filename} does not have line {args.linenumber}")
+except IOError:
+    print(f"Error:{Err}")
+else:
+    print(line)
+
+
